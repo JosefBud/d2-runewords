@@ -1,13 +1,27 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;900&display=swap');
+
+@font-face {
+  font-family: 'AvQest';
+  src: url('AvQest.ttf.woff') format('woff');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --main-primary: #2a0a00;
+  --main-primary-light: #54312c;
+  --main-secondary: #4d5055;
+  --main-secondary-light: #797c81;
+  --main-secondary-dark: #25282c;
+}
+
+body {
+  background: var(--main-primary-light);
+  font-family: 'AvQest', serif;
+  color: #fff;
+}
+
+.bg-secondary-light {
+  background: var(--main-secondary-light);
 }
