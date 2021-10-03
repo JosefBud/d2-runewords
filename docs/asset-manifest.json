@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "https://josefbud.github.io/d2-runewords/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "https://josefbud.github.io/d2-runewords/static/js/main.2c943c8e.chunk.js",
-    "main.js.map": "https://josefbud.github.io/d2-runewords/static/js/main.2c943c8e.chunk.js.map",
-    "runtime-main.js": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.617a16a0.js",
-    "runtime-main.js.map": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.617a16a0.js.map",
-    "static/js/2.922accfe.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/2.922accfe.chunk.js",
-    "static/js/2.922accfe.chunk.js.map": "https://josefbud.github.io/d2-runewords/static/js/2.922accfe.chunk.js.map",
-    "static/js/3.d44e19c0.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/3.d44e19c0.chunk.js",
-    "static/js/3.d44e19c0.chunk.js.map": "https://josefbud.github.io/d2-runewords/static/js/3.d44e19c0.chunk.js.map",
+    "main.css": "https://josefbud.github.io/d2-runewords/static/css/main.8f609775.chunk.css",
+    "main.js": "https://josefbud.github.io/d2-runewords/static/js/main.60c12062.chunk.js",
+    "main.js.map": "https://josefbud.github.io/d2-runewords/static/js/main.60c12062.chunk.js.map",
+    "runtime-main.js": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.ca79389e.js",
+    "runtime-main.js.map": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.ca79389e.js.map",
+    "static/js/2.8c4edd29.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/2.8c4edd29.chunk.js",
+    "static/js/2.8c4edd29.chunk.js.map": "https://josefbud.github.io/d2-runewords/static/js/2.8c4edd29.chunk.js.map",
+    "static/js/3.53a1d0a0.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/3.53a1d0a0.chunk.js",
+    "static/js/3.53a1d0a0.chunk.js.map": "https://josefbud.github.io/d2-runewords/static/js/3.53a1d0a0.chunk.js.map",
     "index.html": "https://josefbud.github.io/d2-runewords/index.html",
-    "static/css/main.8c8b27cf.chunk.css.map": "https://josefbud.github.io/d2-runewords/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.922accfe.chunk.js.LICENSE.txt": "https://josefbud.github.io/d2-runewords/static/js/2.922accfe.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "https://josefbud.github.io/d2-runewords/static/media/logo.6ce24c58.svg"
+    "static/css/main.8f609775.chunk.css.map": "https://josefbud.github.io/d2-runewords/static/css/main.8f609775.chunk.css.map",
+    "static/js/2.8c4edd29.chunk.js.LICENSE.txt": "https://josefbud.github.io/d2-runewords/static/js/2.8c4edd29.chunk.js.LICENSE.txt",
+    "static/media/index.css": "https://josefbud.github.io/d2-runewords/static/media/AvQest.ttf.ef83ab9e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.617a16a0.js",
-    "static/js/2.922accfe.chunk.js",
-    "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.2c943c8e.chunk.js"
+    "static/js/runtime-main.ca79389e.js",
+    "static/js/2.8c4edd29.chunk.js",
+    "static/css/main.8f609775.chunk.css",
+    "static/js/main.60c12062.chunk.js"
   ]
 }
