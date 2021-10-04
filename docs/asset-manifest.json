@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "https://josefbud.github.io/d2-runewords/static/css/main.104b6a68.chunk.css",
-    "main.js": "https://josefbud.github.io/d2-runewords/static/js/main.6664fad5.chunk.js",
-    "main.js.map": "https://josefbud.github.io/d2-runewords/static/js/main.6664fad5.chunk.js.map",
+    "main.js": "https://josefbud.github.io/d2-runewords/static/js/main.45b982a2.chunk.js",
+    "main.js.map": "https://josefbud.github.io/d2-runewords/static/js/main.45b982a2.chunk.js.map",
     "runtime-main.js": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.ef982acc.js",
     "runtime-main.js.map": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.ef982acc.js.map",
     "static/js/2.ce3f70b1.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/2.ce3f70b1.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.ef982acc.js",
     "static/js/2.ce3f70b1.chunk.js",
     "static/css/main.104b6a68.chunk.css",
-    "static/js/main.6664fad5.chunk.js"
+    "static/js/main.45b982a2.chunk.js"
   ]
 }

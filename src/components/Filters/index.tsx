@@ -36,7 +36,7 @@ const Filters = ({
       }}
     >
       <Typography variant="h3">Filters</Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justifyContent="center">
         <Grid item xs={12} md={4}>
           <MultiselectFilter
             label="Item Types"
@@ -53,7 +53,7 @@ const Filters = ({
             selectedSetter={setSelectedRunesAvailable}
           />
         </Grid>
-        <Grid item xs={12} md={12} mt={4}>
+        <Grid item xs={12} md={10} mt={4}>
           <SliderFilter
             label="Character Level"
             range={[1, 99]}
