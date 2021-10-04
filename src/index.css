@@ -9,15 +9,16 @@
 }
 
 :root {
-  --main-primary: #2a0a00;
-  --main-primary-light: #54312c;
+  --main-primary: #92140c;
+  --main-primary-light: #c94a34;
+  --main-primary-dark: #5e0000;
   --main-secondary: #4d5055;
   --main-secondary-light: #797c81;
   --main-secondary-dark: #25282c;
 }
 
 body {
-  background: var(--main-primary-light);
+  background: var(--main-primary-dark);
   font-family: 'AvQest', serif;
   color: #fff;
 }

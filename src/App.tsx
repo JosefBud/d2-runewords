@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Container,
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  List,
-  ListItem,
-  ListItemText
-} from '@mui/material';
-import { alpha } from '@mui/material';
+import { Container, Grid } from '@mui/material';
+import LazyLoad from 'react-lazyload';
+import { ItemCard, Filters } from './components';
 import './App.css';
 import db from './db.json';
 
-function App() {
+// db.forEach((runeword) => {
+//   const { items } = runeword;
+
+//   items.forEach((item: string) => {
+//     if (!itemCategories.includes(item)) itemCategories.push(item);
+//   });
+
+//   itemCategories.sort();
+// });
+
+const App = () => {
   const [runewords, setRunewords] = useState(db);
+  const [selectedItemCategories, setSelectedItemCategories] = useState<string[]>([]);
   const [isAmazon, setIsAmazon] = useState(false);
 
   useEffect(() => {
@@ -32,107 +34,35 @@ function App() {
 
   return (
     <Container>
-      <Box m={4}>
-        <input type="checkbox" checked={isAmazon} onChange={() => setIsAmazon(!isAmazon)} />
-        <span>Bows & Crossbows</span>
-      </Box>
-      <Grid container spacing={2}>
+      <Filters
+        selectedItemCategories={selectedItemCategories}
+        setSelectedItemCategories={setSelectedItemCategories}
+      />
+      <Grid container spacing={2} justifyContent="center">
+        {/* eslint-disable-next-line array-callback-return */}
         {runewords.map((runeword, runewordIndex) => {
-          const { name, level, items, runes, stats } = runeword;
-          return (
-            <Grid item xs={12} px={2} key={`runeword-${runewordIndex}`}>
-              <Card variant="outlined" sx={{ bgcolor: alpha('#000000', 0.7) }}>
-                <CardContent>
-                  <Typography variant="h6" sx={{ color: '#948064' }}>
-                    {name}
-                  </Typography>
-                  <Typography color="common.white">
-                    Character level required: {level}
-                  </Typography>
-                  <Typography color="common.white">{items.join(', ')}</Typography>
-                  <Typography color="common.white">{runes.join(', ')}</Typography>
+          let filterMatch = false;
 
-                  <List dense>
-                    {stats.map((stat, statIndex) => {
-                      const {
-                        valueMin,
-                        valueMax,
-                        percent,
-                        modifier,
-                        spell,
-                        spellLevel,
-                        spellCharges,
-                        skill,
-                        skillLevelMin,
-                        skillLevelMax,
-                        skillBoost,
-                        skillBoostValueMin,
-                        skillBoostValueMax,
-                        note
-                      } = stat;
+          for (const category of selectedItemCategories) {
+            if (runeword.items.includes(category)) {
+              filterMatch = true;
+              break;
+            }
+          }
 
-                      let statString = '';
-
-                      if (modifier && valueMin) {
-                        statString +=
-                          valueMin === valueMax ? `${valueMin}` : `${valueMin} - ${valueMax}`;
-                        statString += percent ? '%' : '';
-                        statString += ` ${modifier}`;
-                      }
-
-                      if (modifier && !valueMin) {
-                        statString += ` ${modifier}`;
-                      }
-
-                      if (spell) {
-                        statString += `Level ${spellLevel} ${spell} (${spellCharges} charges)`;
-                      }
-
-                      if (skill) {
-                        statString += 'Level';
-                        statString +=
-                          skillLevelMin === skillLevelMax
-                            ? ` ${skillLevelMin}`
-                            : ` ${skillLevelMin} - ${skillLevelMax}`;
-                        statString += ` ${skill} when equipped`;
-                      }
-
-                      if (skillBoost) {
-                        statString +=
-                          skillBoostValueMin === skillBoostValueMax
-                            ? `+${skillBoostValueMin} to`
-                            : `+${skillBoostValueMin} - ${skillBoostValueMax} to`;
-                        statString += ` ${skillBoost}`;
-                      }
-
-                      statString += note && ` (${note})`;
-
-                      return (
-                        <ListItem
-                          sx={{ padding: 0 }}
-                          key={`runeword-${runewordIndex}-stat-${statIndex}`}
-                        >
-                          <ListItemText
-                            sx={{
-                              color: '#5050ac',
-                              marginTop: 0,
-                              marginBottom: 0
-                            }}
-                          >
-                            <span style={{ fontWeight: 900 }}>{statString}</span>
-                          </ListItemText>
-                        </ListItem>
-                      );
-                    })}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
-          );
+          if (filterMatch || selectedItemCategories.length === 0) {
+            return (
+              <Grid item xs={8} px={2} key={`runeword-${runewordIndex}`}>
+                <LazyLoad height={200} placeholder={<p>loading</p>}>
+                  <ItemCard runeword={runeword} />
+                </LazyLoad>
+              </Grid>
+            );
+          }
         })}
       </Grid>
     </Container>
   );
-}
+};
 
 export default App;

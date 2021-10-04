@@ -5,7 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+/*
+  --main-primary: #92140c;
+  --main-primary-light: #c94a34;
+  --main-primary-dark: #5e0000;
+*/
+
+/*
+  --main-primary: #2a0a00;
+  --main-primary-light: #54312c;
+*/
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#92140c',
+      light: '#c94a34',
+      dark: '#5e0000'
+    },
+    secondary: {
+      main: '#c1b4ae',
+      light: '#f4e6e0',
+      dark: '#91847f'
+    }
+  },
   typography: {
     fontFamily: ['AvQest', 'serif'].join(','),
     fontSize: 18,
