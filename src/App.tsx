@@ -20,11 +20,12 @@ const App = () => {
   const [runewords] = useState(db);
   const [selectedItemCategories, setSelectedItemCategories] = useState<string[]>([]);
   const [selectedRunesAvailable, setSelectedRunesAvailable] = useState<string[]>([]);
+  const [selectedModifiers, setSelectedModifiers] = useState<string[]>([]);
   const [selectedLevelRange, setSelectedLevelRange] = useState<number[]>([1, 99]);
 
   useEffect(() => {
     forceCheck();
-  }, [selectedItemCategories, selectedRunesAvailable, selectedLevelRange]);
+  }, [selectedItemCategories, selectedRunesAvailable, selectedLevelRange, selectedModifiers]);
 
   return (
     <Container>
@@ -33,12 +34,16 @@ const App = () => {
         setSelectedItemCategories={setSelectedItemCategories}
         selectedRunesAvailable={selectedRunesAvailable}
         setSelectedRunesAvailable={setSelectedRunesAvailable}
+        selectedModifiers={selectedModifiers}
+        setSelectedModifiers={setSelectedModifiers}
         selectedLevelRange={selectedLevelRange}
         setSelectedLevelRange={setSelectedLevelRange}
       />
       <Grid container spacing={2} justifyContent="center">
         {/* eslint-disable-next-line array-callback-return */}
         {runewords.map((runeword: Runeword, runewordIndex: number) => {
+          const { stats } = runeword;
+
           let itemCategoryMatch: boolean = false;
           // If user has selected any item category filters
           if (selectedItemCategories.length) {
@@ -67,15 +72,37 @@ const App = () => {
             runeMatch = true;
           }
 
+          let modifierMatch: boolean = true;
+          // If user has selected any modifier filters
+          if (selectedModifiers.length) {
+            const availableModifiers = [];
+
+            // Create array of available modifiers
+            for (const stat of stats) {
+              availableModifiers.push(stat.modifier);
+            }
+
+            // Check all selected modifiers against the available ones
+            for (const selectedModifier of selectedModifiers) {
+              // If there's a single one that's not available, there is no match
+              if (!availableModifiers.includes(selectedModifier)) {
+                modifierMatch = false;
+                break;
+              }
+            }
+          }
+
           const [minLevel, maxLevel] = selectedLevelRange;
           const levelMatch = runeword.level <= maxLevel && runeword.level >= minLevel;
 
           const noFilters: boolean =
             !selectedItemCategories.length &&
             !selectedRunesAvailable.length &&
+            !selectedModifiers.length &&
             minLevel === 1 &&
             maxLevel === 99;
-          const filterMatch: boolean = itemCategoryMatch && runeMatch && levelMatch;
+          const filterMatch: boolean =
+            itemCategoryMatch && runeMatch && modifierMatch && levelMatch;
 
           if (filterMatch || noFilters) {
             return (

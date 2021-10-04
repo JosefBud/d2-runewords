@@ -5,12 +5,27 @@ import MultiselectFilter from './MultiselectFilter';
 import SliderFilter from './SliderFilter';
 
 import { ITEM_CATEGORIES, RUNES_AVAILABLE } from '../../constants';
+import db from '../../db.json';
+const modifierList: string[] = [];
+db.forEach((runeword) => {
+  const { stats } = runeword;
+
+  stats.forEach((stat) => {
+    const { modifier } = stat;
+    if (modifier && !modifierList.includes(modifier)) {
+      modifierList.push(modifier);
+    }
+  });
+});
+modifierList.sort();
 
 type FiltersProps = {
   selectedItemCategories: string[];
   setSelectedItemCategories: Dispatch<SetStateAction<string[]>>;
   selectedRunesAvailable: string[];
   setSelectedRunesAvailable: Dispatch<SetStateAction<string[]>>;
+  selectedModifiers: string[];
+  setSelectedModifiers: Dispatch<SetStateAction<string[]>>;
   selectedLevelRange: number[];
   setSelectedLevelRange: Dispatch<SetStateAction<number[]>>;
 };
@@ -20,6 +35,8 @@ const Filters = ({
   setSelectedItemCategories,
   selectedRunesAvailable,
   setSelectedRunesAvailable,
+  selectedModifiers,
+  setSelectedModifiers,
   selectedLevelRange,
   setSelectedLevelRange
 }: FiltersProps) => {
@@ -51,6 +68,14 @@ const Filters = ({
             choices={RUNES_AVAILABLE}
             selected={selectedRunesAvailable}
             selectedSetter={setSelectedRunesAvailable}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <MultiselectFilter
+            label="Modifiers"
+            choices={modifierList}
+            selected={selectedModifiers}
+            selectedSetter={setSelectedModifiers}
           />
         </Grid>
         <Grid item xs={12} md={10} mt={4}>
