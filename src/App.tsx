@@ -5,38 +5,35 @@ import { ItemCard, Filters } from './components';
 import './App.css';
 import db from './db.json';
 
+// const runesAvailable: string[] = [];
 // db.forEach((runeword) => {
-//   const { items } = runeword;
+//   const { runes } = runeword;
 
-//   items.forEach((item: string) => {
-//     if (!itemCategories.includes(item)) itemCategories.push(item);
+//   runes.forEach((rune: string) => {
+//     if (!runesAvailable.includes(rune)) runesAvailable.push(rune);
 //   });
 
-//   itemCategories.sort();
+//   runesAvailable.sort();
 // });
 
 const App = () => {
   const [runewords, setRunewords] = useState(db);
   const [selectedItemCategories, setSelectedItemCategories] = useState<string[]>([]);
+  const [selectedRunesAvailable, setSelectedRunesAvailable] = useState<string[]>([]);
   const [isAmazon, setIsAmazon] = useState(false);
 
   useEffect(() => {
-    if (isAmazon) {
-      const filteredRunewords = runewords.filter((runeword) => {
-        const { items } = runeword;
-        return items.includes('Bows');
-      });
-      return setRunewords(filteredRunewords);
-    }
-
-    setRunewords(db);
-  }, [isAmazon]);
+    console.log('items', selectedItemCategories);
+    console.log('runes', selectedRunesAvailable);
+  }, [selectedItemCategories, selectedRunesAvailable]);
 
   return (
     <Container>
       <Filters
         selectedItemCategories={selectedItemCategories}
         setSelectedItemCategories={setSelectedItemCategories}
+        selectedRunesAvailable={selectedRunesAvailable}
+        setSelectedRunesAvailable={setSelectedRunesAvailable}
       />
       <Grid container spacing={2} justifyContent="center">
         {/* eslint-disable-next-line array-callback-return */}
@@ -50,10 +47,21 @@ const App = () => {
             }
           }
 
-          if (filterMatch || selectedItemCategories.length === 0) {
+          for (const rune of selectedRunesAvailable) {
+            console.log('checking rune', rune);
+            if (runeword.runes.includes(rune)) {
+              console.log('match!');
+              filterMatch = true;
+              break;
+            }
+          }
+
+          const noFilters = !selectedItemCategories.length && !selectedRunesAvailable.length;
+
+          if (filterMatch || noFilters) {
             return (
               <Grid item xs={8} px={2} key={`runeword-${runewordIndex}`}>
-                <LazyLoad height={200} placeholder={<p>loading</p>}>
+                <LazyLoad height={200} placeholder={<p>Scroll down!</p>}>
                   <ItemCard runeword={runeword} />
                 </LazyLoad>
               </Grid>

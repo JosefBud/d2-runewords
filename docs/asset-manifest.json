@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "https://josefbud.github.io/d2-runewords/static/css/main.70ebd4b0.chunk.css",
-    "main.js": "https://josefbud.github.io/d2-runewords/static/js/main.58923832.chunk.js",
-    "main.js.map": "https://josefbud.github.io/d2-runewords/static/js/main.58923832.chunk.js.map",
+    "main.css": "https://josefbud.github.io/d2-runewords/static/css/main.17726da9.chunk.css",
+    "main.js": "https://josefbud.github.io/d2-runewords/static/js/main.d2d82b1a.chunk.js",
+    "main.js.map": "https://josefbud.github.io/d2-runewords/static/js/main.d2d82b1a.chunk.js.map",
     "runtime-main.js": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.88b79e8d.js",
     "runtime-main.js.map": "https://josefbud.github.io/d2-runewords/static/js/runtime-main.88b79e8d.js.map",
-    "static/js/2.2b6a90d1.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/2.2b6a90d1.chunk.js",
-    "static/js/2.2b6a90d1.chunk.js.map": "https://josefbud.github.io/d2-runewords/static/js/2.2b6a90d1.chunk.js.map",
+    "static/js/2.2124df3d.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/2.2124df3d.chunk.js",
+    "static/js/2.2124df3d.chunk.js.map": "https://josefbud.github.io/d2-runewords/static/js/2.2124df3d.chunk.js.map",
     "static/js/3.9f5df5c5.chunk.js": "https://josefbud.github.io/d2-runewords/static/js/3.9f5df5c5.chunk.js",
     "static/js/3.9f5df5c5.chunk.js.map": "https://josefbud.github.io/d2-runewords/static/js/3.9f5df5c5.chunk.js.map",
     "index.html": "https://josefbud.github.io/d2-runewords/index.html",
-    "static/css/main.70ebd4b0.chunk.css.map": "https://josefbud.github.io/d2-runewords/static/css/main.70ebd4b0.chunk.css.map",
-    "static/js/2.2b6a90d1.chunk.js.LICENSE.txt": "https://josefbud.github.io/d2-runewords/static/js/2.2b6a90d1.chunk.js.LICENSE.txt",
+    "static/css/main.17726da9.chunk.css.map": "https://josefbud.github.io/d2-runewords/static/css/main.17726da9.chunk.css.map",
+    "static/js/2.2124df3d.chunk.js.LICENSE.txt": "https://josefbud.github.io/d2-runewords/static/js/2.2124df3d.chunk.js.LICENSE.txt",
     "static/media/index.css": "https://josefbud.github.io/d2-runewords/static/media/AvQest.ttf.ef83ab9e.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.88b79e8d.js",
-    "static/js/2.2b6a90d1.chunk.js",
-    "static/css/main.70ebd4b0.chunk.css",
-    "static/js/main.58923832.chunk.js"
+    "static/js/2.2124df3d.chunk.js",
+    "static/css/main.17726da9.chunk.css",
+    "static/js/main.d2d82b1a.chunk.js"
   ]
 }
