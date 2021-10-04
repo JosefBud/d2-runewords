@@ -61,9 +61,9 @@ const App = () => {
           if (filterMatch || noFilters) {
             return (
               <Grid item xs={8} px={2} key={`runeword-${runewordIndex}`}>
-                <LazyLoad height={200} placeholder={<p>Scroll down!</p>}>
-                  <ItemCard runeword={runeword} />
-                </LazyLoad>
+                {/* <LazyLoad height={200} placeholder={<p>Scroll down!</p>}> */}
+                <ItemCard runeword={runeword} />
+                {/* </LazyLoad> */}
               </Grid>
             );
           }
