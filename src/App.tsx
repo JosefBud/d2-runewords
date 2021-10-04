@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid } from '@mui/material';
-import LazyLoad from 'react-lazyload';
+import LazyLoad, { forceCheck } from 'react-lazyload';
 import { ItemCard, Filters } from './components';
 import './App.css';
 import db from './db.json';
@@ -17,15 +17,14 @@ import db from './db.json';
 // });
 
 const App = () => {
-  const [runewords, setRunewords] = useState(db);
+  const [runewords] = useState(db);
   const [selectedItemCategories, setSelectedItemCategories] = useState<string[]>([]);
   const [selectedRunesAvailable, setSelectedRunesAvailable] = useState<string[]>([]);
-  const [isAmazon, setIsAmazon] = useState(false);
+  const [selectedLevelRange, setSelectedLevelRange] = useState<number[]>([1, 99]);
 
   useEffect(() => {
-    console.log('items', selectedItemCategories);
-    console.log('runes', selectedRunesAvailable);
-  }, [selectedItemCategories, selectedRunesAvailable]);
+    forceCheck();
+  }, [selectedItemCategories, selectedRunesAvailable, selectedLevelRange]);
 
   return (
     <Container>
@@ -34,36 +33,56 @@ const App = () => {
         setSelectedItemCategories={setSelectedItemCategories}
         selectedRunesAvailable={selectedRunesAvailable}
         setSelectedRunesAvailable={setSelectedRunesAvailable}
+        selectedLevelRange={selectedLevelRange}
+        setSelectedLevelRange={setSelectedLevelRange}
       />
       <Grid container spacing={2} justifyContent="center">
         {/* eslint-disable-next-line array-callback-return */}
-        {runewords.map((runeword, runewordIndex) => {
-          let filterMatch = false;
-
-          for (const category of selectedItemCategories) {
-            if (runeword.items.includes(category)) {
-              filterMatch = true;
-              break;
+        {runewords.map((runeword: Runeword, runewordIndex: number) => {
+          let itemCategoryMatch: boolean = false;
+          // If user has selected any item category filters
+          if (selectedItemCategories.length) {
+            for (const category of selectedItemCategories) {
+              if (runeword.items.includes(category)) {
+                itemCategoryMatch = true;
+                break;
+              }
             }
+          } else {
+            // No filters selected
+            itemCategoryMatch = true;
           }
 
-          for (const rune of selectedRunesAvailable) {
-            console.log('checking rune', rune);
-            if (runeword.runes.includes(rune)) {
-              console.log('match!');
-              filterMatch = true;
-              break;
+          let runeMatch: boolean = false;
+          // If user has selected any rune filters
+          if (selectedRunesAvailable.length) {
+            for (const rune of selectedRunesAvailable) {
+              if (runeword.runes.includes(rune)) {
+                runeMatch = true;
+                break;
+              }
             }
+          } else {
+            // No filters selected
+            runeMatch = true;
           }
 
-          const noFilters = !selectedItemCategories.length && !selectedRunesAvailable.length;
+          const [minLevel, maxLevel] = selectedLevelRange;
+          const levelMatch = runeword.level <= maxLevel && runeword.level >= minLevel;
+
+          const noFilters: boolean =
+            !selectedItemCategories.length &&
+            !selectedRunesAvailable.length &&
+            minLevel === 1 &&
+            maxLevel === 99;
+          const filterMatch: boolean = itemCategoryMatch && runeMatch && levelMatch;
 
           if (filterMatch || noFilters) {
             return (
               <Grid item xs={8} px={2} key={`runeword-${runewordIndex}`}>
-                {/* <LazyLoad height={200} placeholder={<p>Scroll down!</p>}> */}
-                <ItemCard runeword={runeword} />
-                {/* </LazyLoad> */}
+                <LazyLoad height="100%" placeholder={<p>Scroll down!</p>}>
+                  <ItemCard runeword={runeword} />
+                </LazyLoad>
               </Grid>
             );
           }

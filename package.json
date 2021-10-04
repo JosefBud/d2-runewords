@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "PUBLIC_URL=https://josefbud.github.io/d2-runewords react-scripts build && cp -r build/* docs/.",
-    "build:local": "PUBLIC_URL=http://127.0.0.1:5500/docs react-scripts build",
+    "build:local": "PUBLIC_URL=http://127.0.0.1:5500/build react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
